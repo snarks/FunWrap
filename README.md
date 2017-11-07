@@ -5,9 +5,9 @@ stream.filter(Foo::isValid)
       .map(Foo::toBar)
       .forEach(Bar::printBaz);
 ```
-_Except_ you can't, because all your methods have that pesky `throws Exception` clause.
+_Except_ you can't, because all your methods have that pesky `throws Exception` clause!
 
-No problem! We can always wrap those in `try`-`catch` blocks!
+No problem! We can just wrap those in `try`-`catch` blocks!
 ```java
 stream.filter(foo -> {
   try {
@@ -35,7 +35,7 @@ CheckedFunction<Foo, Bar> fn = foo -> {
 };
 ```
 
-**A way to throw checked exceptions without a throws clause or wrapping it in RuntimeException:**
+**A way to throw checked exceptions without using a `throws` clause or wrapping it in RuntimeException:**
 ```java
 void doSomething() throws Exception { ... }
 
@@ -44,7 +44,7 @@ void doSomethingElse() {
 }
 ```
 
-**A way to convert make lambdas without having to wrap them to `try`-`catch` blocks:**
+**A way to make lambdas without having to wrap them to `try`-`catch` blocks:**
 ```java
 import static io.github.snarks.funwrap.FunWrap.*;
 
@@ -54,9 +54,9 @@ stream.filter(predicate(Foo::isValid))
 ```
 
 ## What? How is that even possible?!
-_FunWrap_ doesn't really do anything particularly fancy. It just ~~abuses~~ takes advantage of Kotlin's ability to do away with checked exceptions entirely.
+_FunWrap_ isn't really doing anything particularly fancy. It just ~~abuses~~ takes advantage of Kotlin's ability to do away with checked exceptions entirely.
 
-This is possible because checked exceptions is purely a Java compiler thing. The JVM doesn't really even know about checked exceptions at all.
+This is possible because checked exceptions is purely a Java compiler thing. The JVM doesn't really care about checked exceptions at all when it comes to invoking methods.
 
 
 ## Adding FunWrap to your Project
