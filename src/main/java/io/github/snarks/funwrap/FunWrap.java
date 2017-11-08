@@ -4,35 +4,33 @@ import io.github.snarks.funwrap.functions.*;
 
 import java.util.function.*;
 
-import static io.github.snarks.funwrap.FunRunner.*;
-
 public class FunWrap {
 
 	private FunWrap() {
 	}
 
 	public static Runnable runnable(CheckedRunnable runnable) {
-		return () -> run(runnable);
+		return runnable;
 	}
 
 	public static <T> Supplier<T> supplier(CheckedSupplier<T> supplier) {
-		return () -> get(supplier);
+		return supplier;
 	}
 
 	public static <T> Consumer<T> consumer(CheckedConsumer<T> consumer) {
-		return (t) -> FunRunner.accept(consumer, t);
+		return consumer;
 	}
 
 	public static <T, U> BiConsumer<T, U> consumer(CheckedBiConsumer<T, U> biConsumer) {
-		return (t, u) -> FunRunner.accept(biConsumer, t, u);
+		return biConsumer;
 	}
 
 	public static <T, R> Function<T, R> function(CheckedFunction<T, R> function) {
-		return (t) -> FunRunner.apply(function, t);
+		return function;
 	}
 
 	public static <T, U, R> BiFunction<T, U, R> function(CheckedBiFunction<T, U, R> biFunction) {
-		return (t, u) -> FunRunner.apply(biFunction, t, u);
+		return biFunction;
 	}
 
 	public static <T> Predicate<T> predicate(CheckedPredicate<T> predicate) {
@@ -40,6 +38,6 @@ public class FunWrap {
 	}
 
 	public static <T, U> BiPredicate<T, U> predicate(CheckedBiPredicate<T, U> biPredicate) {
-		return (t, u) -> test(biPredicate, t, u);
+		return biPredicate;
 	}
 }
