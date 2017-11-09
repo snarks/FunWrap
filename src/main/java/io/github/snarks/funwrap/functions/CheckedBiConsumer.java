@@ -25,6 +25,6 @@ public interface CheckedBiConsumer<T, U> extends BiConsumer<T, U> {
 
 	@Override
 	default void accept(T t, U u) {
-		FunRunner.accept(this, t, u);
+		FunRunner.accept(t, u, this);
 	}
 }

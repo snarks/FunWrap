@@ -25,6 +25,6 @@ public interface CheckedPredicate<T> extends Predicate<T> {
 
 	@Override
 	default boolean test(T t) {
-		return FunRunner.test(this, t);
+		return FunRunner.test(t, this);
 	}
 }

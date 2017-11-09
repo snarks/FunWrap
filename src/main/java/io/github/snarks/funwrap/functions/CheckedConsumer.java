@@ -25,6 +25,6 @@ public interface CheckedConsumer<T> extends Consumer<T> {
 
 	@Override
 	default void accept(T t) {
-		FunRunner.accept(this, t);
+		FunRunner.accept(t, this);
 	}
 }

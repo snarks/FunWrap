@@ -25,6 +25,6 @@ public interface CheckedFunction<T, R> extends Function<T, R> {
 
 	@Override
 	default R apply(T t) {
-		return FunRunner.apply(this, t);
+		return FunRunner.apply(t, this);
 	}
 }

@@ -25,6 +25,6 @@ public interface CheckedBiFunction<T, U, R> extends BiFunction<T, U, R> {
 
 	@Override
 	default R apply(T t, U u) {
-		return FunRunner.apply(this, t, u);
+		return FunRunner.apply(t, u, this);
 	}
 }

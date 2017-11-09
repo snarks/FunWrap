@@ -24,14 +24,14 @@ fun run(runnable: CheckedRunnable) = runnable.runChecked()
 
 fun <R> get(supplier: CheckedSupplier<R>) = supplier.getChecked()
 
-fun <T> accept(consumer: CheckedConsumer<T>, t: T) = consumer.acceptChecked(t)
+fun <T> accept(t: T, consumer: CheckedConsumer<T>) = consumer.acceptChecked(t)
 
-fun <T, U> accept(biConsumer: CheckedBiConsumer<T, U>, t: T, u: U) = biConsumer.acceptChecked(t, u)
+fun <T, U> accept(t: T, u: U, biConsumer: CheckedBiConsumer<T, U>) = biConsumer.acceptChecked(t, u)
 
-fun <T, R> apply(function: CheckedFunction<T, R>, t: T) = function.applyChecked(t)
+fun <T, R> apply(t: T, function: CheckedFunction<T, R>) = function.applyChecked(t)
 
-fun <T, U, R> apply(biFunction: CheckedBiFunction<T, U, R>, t: T, u: U) = biFunction.applyChecked(t, u)
+fun <T, U, R> apply(t: T, u: U, biFunction: CheckedBiFunction<T, U, R>) = biFunction.applyChecked(t, u)
 
-fun <T> test(predicate: CheckedPredicate<T>, t: T) = predicate.testChecked(t)
+fun <T> test(t: T, predicate: CheckedPredicate<T>) = predicate.testChecked(t)
 
-fun <T, U> test(biPredicate: CheckedBiPredicate<T, U>, t: T, u: U) = biPredicate.testChecked(t, u)
+fun <T, U> test(t: T, u: U, biPredicate: CheckedBiPredicate<T, U>) = biPredicate.testChecked(t, u)

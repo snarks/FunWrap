@@ -25,6 +25,6 @@ public interface CheckedBiPredicate<T, U> extends BiPredicate<T, U> {
 
 	@Override
 	default boolean test(T t, U u) {
-		return FunRunner.test(this, t, u);
+		return FunRunner.test(t, u, this);
 	}
 }
