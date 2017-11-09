@@ -19,10 +19,26 @@ import io.github.snarks.funwrap.FunRunner;
 
 import java.util.function.Predicate;
 
+/**
+ * A {@link Predicate} that allows for checked exceptions.
+ *
+ * @param <T> The argument type
+ */
 @FunctionalInterface
 public interface CheckedPredicate<T> extends Predicate<T> {
+
+	/**
+	 * Evaluates this predicate on the given argument.
+	 *
+	 * @param t The input argument
+	 * @return {@code true} if the input arguments match the predicate, otherwise {@code false}
+	 * @throws Exception The exception thrown by this predicate
+	 */
 	boolean testChecked(T t) throws Exception;
 
+	/**
+	 * Calls {@code testChecked} while bypassing the {@code throws} clause.
+	 */
 	@Override
 	default boolean test(T t) {
 		return FunRunner.test(t, this);

@@ -17,10 +17,22 @@ package io.github.snarks.funwrap.functions;
 
 import io.github.snarks.funwrap.FunRunner;
 
+/**
+ * A {@link Runnable} that allows for checked exceptions.
+ */
 @FunctionalInterface
 public interface CheckedRunnable extends Runnable {
+
+	/**
+	 * Performs this operation.
+	 *
+	 * @throws Exception The exception thrown by this operation
+	 */
 	void runChecked() throws Exception;
 
+	/**
+	 * Calls {@code runChecked} while bypassing the {@code throws} clause.
+	 */
 	@Override
 	default void run() {
 		FunRunner.run(this);

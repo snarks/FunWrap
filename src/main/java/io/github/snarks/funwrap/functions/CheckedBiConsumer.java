@@ -19,10 +19,27 @@ import io.github.snarks.funwrap.FunRunner;
 
 import java.util.function.BiConsumer;
 
+/**
+ * A {@link BiConsumer} that allows for checked exceptions.
+ *
+ * @param <T> The 1st argument type
+ * @param <U> The 2nd argument type
+ */
 @FunctionalInterface
 public interface CheckedBiConsumer<T, U> extends BiConsumer<T, U> {
+
+	/**
+	 * Performs this operation on the given arguments.
+	 *
+	 * @param t The 1st argument
+	 * @param u The 2nd argument
+	 * @throws Exception The exception thrown by this operation
+	 */
 	void acceptChecked(T t, U u) throws Exception;
 
+	/**
+	 * Calls {@code acceptChecked} while bypassing the {@code throws} clause.
+	 */
 	@Override
 	default void accept(T t, U u) {
 		FunRunner.accept(t, u, this);

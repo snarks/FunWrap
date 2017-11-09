@@ -19,10 +19,25 @@ import io.github.snarks.funwrap.FunRunner;
 
 import java.util.function.Supplier;
 
+/**
+ * A {@link Supplier} that allows for checked exceptions
+ *
+ * @param <T> The return type
+ */
 @FunctionalInterface
 public interface CheckedSupplier<T> extends Supplier<T> {
+
+	/**
+	 * Gets a result.
+	 *
+	 * @return The result
+	 * @throws Exception The exception thrown by this operation
+	 */
 	T getChecked() throws Exception;
 
+	/**
+	 * Calls {@code getChecked} while bypassing the {@code throws} clause.
+	 */
 	@Override
 	default T get() {
 		return FunRunner.get(this);

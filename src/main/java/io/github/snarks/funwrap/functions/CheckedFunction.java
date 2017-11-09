@@ -19,10 +19,27 @@ import io.github.snarks.funwrap.FunRunner;
 
 import java.util.function.Function;
 
+/**
+ * A {@link Function} that allows for checked exceptions.
+ *
+ * @param <T> The argument type
+ * @param <R> The return type
+ */
 @FunctionalInterface
 public interface CheckedFunction<T, R> extends Function<T, R> {
+
+	/**
+	 * Applies this function to the given argument.
+	 *
+	 * @param t The input argument
+	 * @return The function result
+	 * @throws Exception The exception thrown by this function
+	 */
 	R applyChecked(T t) throws Exception;
 
+	/**
+	 * Calls {@code applyChecked} while bypassing the {@code throws} clause.
+	 */
 	@Override
 	default R apply(T t) {
 		return FunRunner.apply(t, this);

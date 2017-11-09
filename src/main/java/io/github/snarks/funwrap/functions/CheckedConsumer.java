@@ -19,10 +19,25 @@ import io.github.snarks.funwrap.FunRunner;
 
 import java.util.function.Consumer;
 
+/**
+ * A {@link Consumer} that allows for checked exceptions.
+ *
+ * @param <T> The argument type
+ */
 @FunctionalInterface
 public interface CheckedConsumer<T> extends Consumer<T> {
+
+	/**
+	 * Performs this operation on the given argument.
+	 *
+	 * @param t The given argument
+	 * @throws Exception The exception thrown by this operation
+	 */
 	void acceptChecked(T t) throws Exception;
 
+	/**
+	 * Calls {@code acceptChecked} while bypassing the {@code throws} clause.
+	 */
 	@Override
 	default void accept(T t) {
 		FunRunner.accept(t, this);

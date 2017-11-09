@@ -19,10 +19,29 @@ import io.github.snarks.funwrap.FunRunner;
 
 import java.util.function.BiFunction;
 
+/**
+ * A {@link BiFunction} that allows for checked exceptions.
+ *
+ * @param <T> The 1st argument type
+ * @param <U> The 2nd argument type
+ * @param <R> The return type
+ */
 @FunctionalInterface
 public interface CheckedBiFunction<T, U, R> extends BiFunction<T, U, R> {
+
+	/**
+	 * Applies this function to the given arguments.
+	 *
+	 * @param t The 1st argument
+	 * @param u The 2nd argument
+	 * @return The function result
+	 * @throws Exception The exception thrown by this function
+	 */
 	R applyChecked(T t, U u) throws Exception;
 
+	/**
+	 * Calls {@code applyChecked} while bypassing the {@code throws} clause.
+	 */
 	@Override
 	default R apply(T t, U u) {
 		return FunRunner.apply(t, u, this);
