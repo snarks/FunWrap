@@ -49,7 +49,7 @@ public class FunWrap {
 	}
 
 	public static <T> Predicate<T> predicate(CheckedPredicate<T> predicate) {
-		return (t) -> FunRunner.test(predicate, t);
+		return predicate;
 	}
 
 	public static <T, U> BiPredicate<T, U> predicate(CheckedBiPredicate<T, U> biPredicate) {
