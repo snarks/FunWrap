@@ -68,7 +68,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-     compile 'io.github.snarks:FunWrap:1.1.1'
+     compile 'io.github.snarks:FunWrap:1.1.2'
 }
 ```
 (_`com.github.snarks` will also work_)
