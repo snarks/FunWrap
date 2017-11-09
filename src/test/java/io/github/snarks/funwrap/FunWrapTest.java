@@ -93,6 +93,12 @@ public class FunWrapTest {
 		f.apply("hello");
 	}
 
+	@Test
+	public void functionBi() {
+		BiFunction<String, Integer, String> f = FunWrap.function((s, t) -> s + " " + t);
+		assertEquals("hello biFunction 1", f.apply("hello biFunction", 1));
+	}
+
 	@Test(expected = TestException.class)
 	public void functionBiError() {
 		BiFunction<String, String, Integer> f = FunWrap.function((s1, s2) -> {
